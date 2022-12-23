@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.database.JdbcCursorItemReader;
 import org.springframework.batch.item.database.builder.JdbcCursorItemReaderBuilder;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,6 +21,7 @@ import com.moduretick.domain.Produto;
 public class LerInteresseProdutoClienteReaderConfig {
 	
 	@Bean
+	@StepScope
 	public JdbcCursorItemReader<InteresseProdutoCliente> lerInteresseProdutoClienteReader(
 			@Qualifier("appDataSource") DataSource dataSource){
 		return new JdbcCursorItemReaderBuilder<InteresseProdutoCliente>()
